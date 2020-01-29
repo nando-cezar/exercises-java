@@ -1,0 +1,8 @@
+br\ba\cimatec\rn\AlunoRN.class
+br\ba\cimatec\util\FabricaDAO.class
+br\ba\cimatec\beans\AlunoBean.class
+br\ba\cimatec\dao\AlunoDaoListener.class
+br\ba\cimatec\util\HibernateUtil.class
+br\ba\cimatec\mapeamento\Aluno.class
+br\ba\cimatec\filtro\FiltroConexaoHibernate.class
+br\ba\cimatec\dao\AlunoDAO.class
