@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    
+    <h:head>
+        <title>Calculadora Inicial</title>
+    </h:head>
+    
+    <h:body>
+        <h:form>
+            <p:outputPanel autoUpdate="true">
+                <p:panel header="Calculadora">
+                    <p:panelGrid columns="2">
+                        <p:outputLabel value="Valor 1:"/>
+                        <p:inputText value="#{calcBean.valor1}"/>
+                        <p:outputLabel value="Valor 2:"/>
+                        <p:inputText value="#{calcBean.valor2}"/>
+                        <p:outputLabel value="Operador:"/>
+                        <p:selectOneMenu value="#{calcBean.op}" >
+                            <f:selectItem itemLabel="Somar" itemValue="+"/>
+                            <f:selectItem itemLabel="Subtrair" itemValue="-"/>
+                            <f:selectItem itemLabel="Multiplicar" itemValue="*"/>
+                            <f:selectItem itemLabel="Dividir" itemValue="/"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="Resultado:"/>
+                        <p:inputText value="#{calcBean.res}" readonly="true"/>
+                        <p:commandButton value="Calcular" action="#{calcBean.calcular()}"/>
+                    </p:panelGrid>
+                </p:panel>
+            </p:outputPanel>
+        </h:form>
+
+    </h:body>
+
+</html>
+
