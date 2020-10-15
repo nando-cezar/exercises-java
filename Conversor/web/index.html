@@ -236,7 +236,7 @@ and open the template in the editor.
                 <div class="title-observation">
                     <p>Preencha corretamente os dados!</p>
                 </div>
-                <form action="conversor">
+                <form action="conversorTemp">
                     <div class="set-input">
                         <label>Valor:</label>
                         <input type="number" name="value" placeholder="Digite somente o valor..." />
@@ -245,16 +245,16 @@ and open the template in the editor.
                     <div class="set-input">
                         <label>Selecione:</label>
                         <label class="container">Celsius para Fahrenheit
-                            <input type="radio" name="radio" value=0 />
+                            <input type="radio" name="op" value="f" />
                             <span class="checkmark"></span>
                         </label>
                         <label class="container">Fahrenheit para Celsius
-                            <input type="radio" name="radio" value=1 />
+                            <input type="radio" name="op" value="c" />
                             <span class="checkmark"></span>
                         </label>
                     </div>
                     <br>
-                    <input type="submit" name="calcular">
+                    <input type="submit" name="calcular" >
                 </form>
             </div>
         </div>
