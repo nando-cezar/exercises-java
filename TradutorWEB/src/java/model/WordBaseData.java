@@ -11,14 +11,14 @@ package model;
  */
 public enum WordBaseData {
     
-    ANEL,
-    HOMEM,
-    MULHER,
-    VIAGEM,
-    DINHEIRO,
-    ESTUDO,
-    DEUS,
-    MUSICA,
-    COMPUTADOR,
-    FAMILIA
+    ANEL, RING,
+    HOMEM, MAN,
+    MULHER, WOMAN,
+    VIAGEM, TRIP,
+    DINHEIRO, MONEY,
+    ESTUDO, STUDY,
+    DEUS, GOD,
+    MUSICA, MUSIC,
+    COMPUTADOR, COMPUTER,
+    FAMILIA, FAMILY
 }
