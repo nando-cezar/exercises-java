@@ -17,26 +17,26 @@ public class Tradutor {
         
         this.value = value;
 
-        if(this.value.toUpperCase().equals(String.valueOf(WordBaseData.RING))){
-            return String.valueOf(WordBaseData.ANEL);
-        }else if(this.value.toUpperCase().equals(String.valueOf(WordBaseData.MAN))){
-            return String.valueOf(WordBaseData.HOMEM);
-        }else if(this.value.toUpperCase().equals(String.valueOf(WordBaseData.WOMAN))){
-            return String.valueOf(WordBaseData.MULHER);
-        }else if(this.value.toUpperCase().equals(String.valueOf(WordBaseData.TRIP))){
-            return String.valueOf(WordBaseData.VIAGEM);
-        }else if(this.value.toUpperCase().equals(String.valueOf(WordBaseData.MONEY))){
-            return String.valueOf(WordBaseData.DINHEIRO);
-        }else if(this.value.toUpperCase().equals(String.valueOf(WordBaseData.STUDY))){
-            return String.valueOf(WordBaseData.ESTUDO);
-        }else if(this.value.toUpperCase().equals(String.valueOf(WordBaseData.GOD))){
-            return String.valueOf(WordBaseData.DEUS);
-        }else if(this.value.toUpperCase().equals(String.valueOf(WordBaseData.MUSIC))){
-            return String.valueOf(WordBaseData.MUSICA);
-        }else if(this.value.toUpperCase().equals(String.valueOf(WordBaseData.COMPUTER))){
-            return String.valueOf(WordBaseData.COMPUTADOR);
-        }else if(this.value.toUpperCase().equals(String.valueOf(WordBaseData.FAMILY))){
-            return String.valueOf(WordBaseData.FAMILIA);
+        if(this.value.toUpperCase().equals(String.valueOf(WordBaseData.ANEL))){
+            return String.valueOf(WordBaseData.RING);
+        }else if(this.value.toUpperCase().equals(String.valueOf(WordBaseData.HOMEM))){
+            return String.valueOf(WordBaseData.MAN);
+        }else if(this.value.toUpperCase().equals(String.valueOf(WordBaseData.MULHER))){
+            return String.valueOf(WordBaseData.WOMAN);
+        }else if(this.value.toUpperCase().equals(String.valueOf(WordBaseData.VIAGEM))){
+            return String.valueOf(WordBaseData.TRIP);
+        }else if(this.value.toUpperCase().equals(String.valueOf(WordBaseData.DINHEIRO))){
+            return String.valueOf(WordBaseData.MONEY);
+        }else if(this.value.toUpperCase().equals(String.valueOf(WordBaseData.ESTUDO))){
+            return String.valueOf(WordBaseData.STUDY);
+        }else if(this.value.toUpperCase().equals(String.valueOf(WordBaseData.DEUS))){
+            return String.valueOf(WordBaseData.GOD);
+        }else if(this.value.toUpperCase().equals(String.valueOf(WordBaseData.MUSICA))){
+            return String.valueOf(WordBaseData.MUSIC);
+        }else if(this.value.toUpperCase().equals(String.valueOf(WordBaseData.COMPUTADOR))){
+            return String.valueOf(WordBaseData.COMPUTER);
+        }else if(this.value.toUpperCase().equals(String.valueOf(WordBaseData.FAMILIA))){
+            return String.valueOf(WordBaseData.FAMILY);
         }
         return null;
     }

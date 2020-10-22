@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Tradutor;
 
 /**
  *
@@ -21,19 +22,22 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/tradutor")
 public class Server extends HttpServlet {
 
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         //pegar parametros
         //chamar regra de negocio
         //passar controle para view
-                
-        //List<String> listProducts = new Oraculo().getGoodProducts(request.getParameter("product"));
-        //request.setAttribute("Products", listProducts);
-        request.getRequestDispatcher("tradutor.jsp").forward(request, response);
-        
+        String value = new Tradutor().getTranslationValue(request.getParameter("value"));
+        if (value != null) {
+            request.setAttribute("Translation", value);
+            request.getRequestDispatcher("tradutor.jsp").forward(request, response);
+        }else{
+            request.setAttribute("Translation", request.getParameter("value"));
+            request.getRequestDispatcher("tradutor.jsp").forward(request, response);
+        }
+
     }
 
 }

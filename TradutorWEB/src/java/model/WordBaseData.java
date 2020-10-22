@@ -20,5 +20,16 @@ public enum WordBaseData {
     DEUS, GOD,
     MUSICA, MUSIC,
     COMPUTADOR, COMPUTER,
-    FAMILIA, FAMILY
+    FAMILIA, FAMILY,
+    
+    AZUL, BLUE,
+    VERMELHO, RED,
+    AMARELO, YELLOW,
+    ROSA, PINK,
+    VERDE, GREEN,
+    CACHORRO, DOG,
+    GATO, CAT,
+    PEIXE, FISH,
+    MACACO, MONKEY,
+    HUMANO, HUMAN
 }
