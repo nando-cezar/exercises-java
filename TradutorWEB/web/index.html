@@ -9,13 +9,187 @@ and open the template in the editor.
         <title>Tradutor</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            *{
+                box-sizing:border-box;
+                margin:0;
+                padding:0
+            }
+            html{
+                width: 100%;
+                height:100%;
+            }
+            body {
+                width: 100%;
+                height:100%;
+                background: #D2DBDC;
+                margin: 0;
+                font-family: 'Segoe UI', Helvetica Neue, Helvetica, Lucida Grande, Arial;
+            }
+            .app-window {
+                background:url(http://i.stack.imgur.com/DGejA.jpg) center center;
+                background-size: cover;
+                height: 100%;
+                padding: 5% 10px;
+                width: 100%;
+
+                /* flexbox */
+                display: -webkit-flex;
+                display: flex;
+
+                /* comportamento: em linha com wrap */
+                -webkit-flex-flow: row wrap;
+                flex-flow: row wrap;
+
+                /* conteúdo justificado no centro */
+                -webkit-justify-content: center;
+                justify-content:center;
+            }
+            .title-container{
+
+                background-size: cover;
+                height: 20%;
+                padding: 0 10px;
+                width: 80%;
+
+                /* flexbox */
+                display: -webkit-flex;
+                display: flex;
+
+                /* comportamento: em linha com wrap */
+                -webkit-flex-flow: row wrap;
+                flex-flow: row wrap;
+
+                /* conteúdo justificado no centro */
+                -webkit-justify-content: center;
+                justify-content:center;
+            }
+            span, h2 {
+                -webkit-flex: 1 0 auto;
+                flex: 1 0 auto;
+            }
+
+            .line {
+                background: #fff;
+                height: 2px;
+                width: 60px;                
+            }
+
+            h2 {
+                color: #fff;
+                text-align: center;
+                overflow: auto;
+                font-size: 100%;
+                min-width: 100%;
+            }    
+            @media(min-width: 450px) {
+                h2 {
+                    font-size: 130%;
+                }
+            }
+
+            .sidebar {
+
+                background-color: rgba(0,0,0,0.2);
+                background-size: cover;
+                border-radius: 10px;
+                height: 80%;
+                padding: 2% 20px;
+                width: 80%;
+
+                /* flexbox */
+                display: -webkit-flex;
+                display: flex;
+
+                /* comportamento: em linha com wrap */
+                -webkit-flex-flow: row wrap;
+                flex-flow: row wrap;
+
+                /* conteúdo justificado no centro */
+                -webkit-justify-content: center;
+                justify-content:center;
+            }
+
+            .title-observation{
+
+                width: 100%;
+                margin: 10px;
+
+                /* flexbox */
+                display: -webkit-flex;
+                display: flex;
+
+                /* comportamento: em linha com wrap */
+                -webkit-flex-flow: row wrap;
+                flex-flow: row wrap;
+
+                /* conteúdo justificado no centro */
+                -webkit-justify-content: center;
+                justify-content:center;
+            }
+
+            p{
+                color: #FFF;
+                text-align: center;
+                font-size: 100%;
+            }
+
+            form{
+                flex:1;
+                background-size: cover;
+            }
+
+            .set-input{
+                flex-direction: row;
+            }
+
+            label {
+                color: #FFF;
+                padding: 12px 45px 12px 0;
+                display: inline-block;
+            }
+
+            input[type=text] {
+                color: #FFF;
+                background: transparent;
+                width: 100%;
+                padding: 12px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+
+            input[type=submit] {
+                background-color: rgba(10,23,55,0.5);
+                width: 100%;
+                padding: 12px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                color: white;
+                cursor: pointer;
+            }
+
+        </style>
     </head>
     <body>
-        <div>Tradutor ONLINE</div>
-        <form action="tradutor">
-            <label>Digite a palavra desejada: </label>
-            <input type="text" name="value" placeholder="Digite aqui..."/>
-            <input type="submit" value="Traduzir" >
-        </form>
+         <div class="app-window">
+            <div class="title-container">
+                <span class='line'></span>
+                <h2>Tradutor WEB</h2>
+                <span class='line'></span>
+            </div>
+            <div class="sidebar">
+                <div class="title-observation">
+                    <p>Preencha corretamente os dados!</p>
+                </div>
+                <form action="translation">
+                    <div class="set-input">
+                        <label>Palavra em português: </label>
+                        <input type="text" name="value" placeholder="Digite aqui..." />
+                    </div>
+                    <br>
+                    <input type="submit" name="translate" >
+                </form>
+            </div>
+        </div>
     </body>
 </html>

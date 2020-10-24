@@ -19,7 +19,7 @@ import model.Tradutor;
  *
  * @author Windows
  */
-@WebServlet("/tradutor")
+@WebServlet("/translation")
 public class Server extends HttpServlet {
 
     @Override

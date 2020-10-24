@@ -37,6 +37,26 @@ public class Tradutor {
             return String.valueOf(WordBaseData.COMPUTER);
         }else if(this.value.toUpperCase().equals(String.valueOf(WordBaseData.FAMILIA))){
             return String.valueOf(WordBaseData.FAMILY);
+        }else if(this.value.toUpperCase().equals(String.valueOf(WordBaseData.AZUL))){
+            return String.valueOf(WordBaseData.BLUE);
+        }else if(this.value.toUpperCase().equals(String.valueOf(WordBaseData.VERMELHO))){
+            return String.valueOf(WordBaseData.RED);
+        }else if(this.value.toUpperCase().equals(String.valueOf(WordBaseData.AMARELO))){
+            return String.valueOf(WordBaseData.YELLOW);
+        }else if(this.value.toUpperCase().equals(String.valueOf(WordBaseData.ROSA))){
+            return String.valueOf(WordBaseData.PINK);
+        }else if(this.value.toUpperCase().equals(String.valueOf(WordBaseData.VERDE))){
+            return String.valueOf(WordBaseData.GREEN);
+        }else if(this.value.toUpperCase().equals(String.valueOf(WordBaseData.CACHORRO))){
+            return String.valueOf(WordBaseData.DOG);
+        }else if(this.value.toUpperCase().equals(String.valueOf(WordBaseData.GATO))){
+            return String.valueOf(WordBaseData.CAT);
+        }else if(this.value.toUpperCase().equals(String.valueOf(WordBaseData.PEIXE))){
+            return String.valueOf(WordBaseData.FISH);
+        }else if(this.value.toUpperCase().equals(String.valueOf(WordBaseData.MACACO))){
+            return String.valueOf(WordBaseData.MONKEY);
+        }else if(this.value.toUpperCase().equals(String.valueOf(WordBaseData.HUMANO))){
+            return String.valueOf(WordBaseData.HUMAN);
         }
         return null;
     }
