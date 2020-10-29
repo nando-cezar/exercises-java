@@ -16,7 +16,29 @@ import java.util.List;
  * @author Windows
  */
 public class UsuarioDAO {
-    
+
+    public static Usuario Create(Usuario usuario) throws Exception {
+
+        Connection conn = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+                
+        try {
+            String sql = "INSERT INTO usuario (login, nome, email) " + "values (?, ?, ?)";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, usuario.getLogin());
+            stmt.setString(2, usuario.getNome());
+            stmt.setString(3, usuario.getEmail());
+
+            stmt.executeUpdate();
+            
+        } catch (SQLException ex) {
+            System.out.println("Erro: " + ex);
+        } finally {
+            ConnectionFactory.closeConnection(conn, stmt);
+        }
+        return usuario;
+    }
+
     public static List<Usuario> getAll(){
         
         Connection conn = ConnectionFactory.getConnection();
@@ -27,7 +49,7 @@ public class UsuarioDAO {
         
         try{
             
-            stmt = conn.prepareStatement("SELECT * FROM tb_usuario");
+            stmt = conn.prepareStatement("SELECT * FROM usuario");
             rs = stmt.executeQuery();
             
             while(rs.next()){
@@ -42,6 +64,7 @@ public class UsuarioDAO {
             }
             
         }catch (SQLException ex){
+            System.out.println("Erro: " + ex);
         }finally{
             ConnectionFactory.closeConnection(conn, stmt, rs);
         }        
