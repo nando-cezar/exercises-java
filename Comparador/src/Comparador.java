@@ -23,7 +23,8 @@ public class Comparador {
         for(Method m : clazz.getMethods()){
             if(m.getName().startsWith("get") &&
                     m.getParameterCount() == 0 &&
-                    m.getReturnType() != void.class){
+                    m.getReturnType() != void.class &&
+                    !m.isAnnotationPresent(IgnorarNaComparacao.class)){
                 
                 Object valorVelho = m.invoke(velho);
                 Object valorNovo = m.invoke(novo);
