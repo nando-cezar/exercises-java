@@ -27,7 +27,7 @@ public class UserDAO implements InterfaceUserDAO {
         PreparedStatement stmt = null;
 
         try {
-            String sql = "INSERT INTO usuario (login, email, nome, senha, pontos) " + "values (?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO usuario (login, email, nome, senha, pontos) values (?, ?, ?, ?, ?)";
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, u.getLogin());
             stmt.setString(2, u.getEmail());

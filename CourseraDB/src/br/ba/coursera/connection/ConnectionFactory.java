@@ -19,7 +19,7 @@ public class ConnectionFactory {
     
      /* Definindo atributos de conexão */
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-    private static final String URL    = "jdbc:mysql://localhost:3306/teste?useTimezone=true&serverTimezone=America/Sao_Paulo&useSSL=false";
+    private static final String URL    = "jdbc:mysql://localhost:3306/coursera?useTimezone=true&serverTimezone=America/Sao_Paulo&useSSL=false";
     private static final String USER   = "root";
     private static final String PASS   = "Pa$$w0rd";
     
