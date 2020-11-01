@@ -33,7 +33,7 @@ public class TestUserDAO {
                 "jdbc:mysql://localhost:3306/coursera?useTimezone=true&serverTimezone=America/Sao_Paulo&useSSL=false",
                 "root", "Pa$$w0rd");
         FlatXmlDataFileLoader loader = new FlatXmlDataFileLoader();
-        jdt.setDataSet(loader.load("/inicio.xml"));
+        jdt.setDataSet(loader.load("/br/ba/coursera/xml/inicio.xml"));
         jdt.onSetup();
     }
 
@@ -41,9 +41,9 @@ public class TestUserDAO {
     public void insertUser() throws Exception {
 
         User u = new User();
-        u.setLogin("Diego123");
-        u.setName("Diego");
+        u.setLogin("Diego123");        
         u.setEmail("diego@teste.com.br");
+        u.setName("Diego");
         u.setPassword("9999");
         u.setPoints(90);
         new UserDAO().insert(u);
@@ -51,7 +51,7 @@ public class TestUserDAO {
         IDataSet currentDataSet = jdt.getConnection().createDataSet();
         ITable currentTable = currentDataSet.getTable("USUARIO");
         FlatXmlDataFileLoader loader = new FlatXmlDataFileLoader();
-        IDataSet expectedDataSet = loader.load("/verifica.xml");
+        IDataSet expectedDataSet = loader.load("/br/ba/coursera/xml/verifica.xml");
         ITable expectedTable = expectedDataSet.getTable("USUARIO");
         Assertion.assertEquals(expectedTable, currentTable);
     }
@@ -71,17 +71,16 @@ public class TestUserDAO {
         IDataSet currentDataSet = jdt.getConnection().createDataSet();
         ITable currentTable = currentDataSet.getTable("USUARIO");
         FlatXmlDataFileLoader loader = new FlatXmlDataFileLoader();
-        IDataSet expectedDataSet = loader.load("/verifica.xml");
+        IDataSet expectedDataSet = loader.load("/br/ba/coursera/xml/verifica_points.xml");
         ITable expectedTable = expectedDataSet.getTable("USUARIO");
         Assertion.assertEquals(expectedTable, currentTable);
     }
     
     @Test
     public void ranking() {
-        
         List<User> list = new UserDAO().ranking();
-        assertEquals(4, list.size());
-        assertEquals("Diego123", list.get(0).getLogin());
+        assertEquals(3, list.size());
+        assertEquals("Lucas123", list.get(0).getLogin());
     }
 
     

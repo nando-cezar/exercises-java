@@ -1,6 +1,6 @@
 <dataset>
+    <USUARIO LOGIN="Diego123" EMAIL="diego@teste.com.br" NOME="Diego" SENHA="9999" PONTOS="90" />
     <USUARIO LOGIN="Fernando123" EMAIL="fernando@teste.com.br" NOME="Fernando"  SENHA="1234" PONTOS="17" />
-    <USUARIO LOGIN="Jeferson123" NOME="Jeferson" EMAIL="jeferson@teste.com.br" SENHA="7894" PONTOS="5" />
-    <USUARIO LOGIN="Lucas123" NOME="Lucas" EMAIL="lucas@teste.com.br" SENHA="4321" PONTOS="20" />
-    <USUARIO LOGIN="Diego123" NOME="Diego" EMAIL="diego@teste.com.br" SENHA="9999" PONTOS="90" />
+    <USUARIO LOGIN="Jeferson123" EMAIL="jeferson@teste.com.br" NOME="Jeferson" SENHA="7894" PONTOS="5" />
+    <USUARIO LOGIN="Lucas123" EMAIL="lucas@teste.com.br" NOME="Lucas" SENHA="4321" PONTOS="20" />   
 </dataset>

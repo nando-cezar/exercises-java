@@ -37,7 +37,7 @@ public class UserDAO implements InterfaceUserDAO {
 
             stmt.executeUpdate();
 
-            System.out.println("Cadastrado com sucesso!!!");
+            System.out.println("Method Insert: Cadastrado com sucesso!!!");
 
         } catch (SQLException ex) {
             System.out.println("Erro: " + ex);
@@ -68,6 +68,8 @@ public class UserDAO implements InterfaceUserDAO {
                 u.setName(rs.getString("nome"));
                 u.setPassword(rs.getString("senha"));
                 u.setPoints(rs.getInt("pontos"));
+                
+                System.out.println("Method recovery: Consulta realizada com sucesso!");
 
             }
 
@@ -93,7 +95,7 @@ public class UserDAO implements InterfaceUserDAO {
 
             stmt.executeUpdate();
 
-            System.out.println("Pontos adicionados com sucesso!!!");
+            System.out.println("Method addPoints: Pontos adicionados com sucesso!!!");
 
         } catch (SQLException ex) {
             System.out.println("Erro: " + ex);
@@ -127,6 +129,8 @@ public class UserDAO implements InterfaceUserDAO {
                 u.setPoints(rs.getInt("pontos"));
 
                 users.add(u);
+                
+                System.out.println("Method ranking: Consulta realizada com sucesso!!!");
 
             }
 
