@@ -83,6 +83,4 @@ public class TestUserDAO {
         assertEquals("Lucas123", list.get(0).getLogin());
     }
 
-    
-
 }
