@@ -21,20 +21,21 @@ import java.util.List;
 public class UserDAO implements InterfaceUserDAO {
 
     @Override
-    public User authentication(User u) {
+    public User authentication(String login, String password) {
         Connection conn = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
-
+        User u = null;
+        
         try {
 
             stmt = conn.prepareStatement("SELECT * FROM usuario WHERE login = ? AND senha = ?");
-            stmt.setString(1, u.getLogin());
-            stmt.setString(2, u.getPassword());
+            stmt.setString(1, login);
+            stmt.setString(2, password);
             rs = stmt.executeQuery();
 
             if (rs.next()) {
-
+                u = new User(); 
                 u.setLogin(rs.getString("login"));
                 u.setEmail(rs.getString("email"));
                 u.setName(rs.getString("nome"));

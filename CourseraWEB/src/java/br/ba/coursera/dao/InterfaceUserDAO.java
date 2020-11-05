@@ -15,7 +15,7 @@ import java.util.List;
 public interface InterfaceUserDAO {
    
    //autenticação do usuário no banco de dados
-   public User authentication(User u);
+   public User authentication(String login, String password);
    
    //insere um novo usuário no banco de dados
    public void insert(User u);

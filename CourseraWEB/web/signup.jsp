@@ -1,3 +1,10 @@
+<%-- 
+    Document   : singup
+    Created on : 02/11/2020, 16:41:53
+    Author     : Windows
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -7,32 +14,24 @@ and open the template in the editor.
 
 <html>
     <head>
-        <title>CourseraWEB | Login</title>
-        <meta charset="UTF-8">
+        <title>CourseraWEB | Signup</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
-            *{
-                box-sizing:border-box;
-                margin:0;
-                padding:0
-            }
-            html{
+            html, body{
                 width: 100%;
                 height:100%;
-            }
-            body {
-                width: 100%;
-                height:100%;
-                background: #D2DBDC;
-                margin: 0;
                 font-family: 'Segoe UI', Helvetica Neue, Helvetica, Lucida Grande, Arial;
             }
-            .app-window {
-                background:url(http://i.stack.imgur.com/DGejA.jpg) center center;
+            body {
+                background:url(https://i.pinimg.com/originals/3b/8a/d2/3b8ad2c7b1be2caf24321c852103598a.jpg);
                 background-size: cover;
-                height: 100%;
-                padding: 5% 10px;
-                width: 100%;
+                background-repeat: no-repeat;
+                display: block;
+                margin:0;
+                padding:0
+
+            }
+            .app-window {
 
                 /* flexbox */
                 display: -webkit-flex;
@@ -47,10 +46,9 @@ and open the template in the editor.
                 justify-content:center;
             }
             .title-container{
-
-                background-size: cover;
+                
+                margin: 2%;
                 height: 20%;
-                padding: 0 10px;
                 width: 80%;
 
                 /* flexbox */
@@ -73,7 +71,9 @@ and open the template in the editor.
             .line {
                 background: #fff;
                 height: 2px;
-                width: 60px;                
+                width: 60px;
+                margin-top: 1%; 
+                margin-bottom: 1%;
             }
 
             h2 {
@@ -92,9 +92,8 @@ and open the template in the editor.
             .sidebar {
 
                 background-color: rgba(0,0,0,0.2);
-                background-size: cover;
                 border-radius: 10px;
-                height: 80%;
+                height: 100%;
                 padding: 2% 20px;
                 width: 80%;
 
@@ -158,8 +157,25 @@ and open the template in the editor.
                 border: 1px solid #ccc;
                 border-radius: 4px;
             }
-            
+
             input[type=password] {
+                color: #FFF;
+                background: transparent;
+                width: 100%;
+                padding: 12px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+            input[type=email] {
+                color: #FFF;
+                background: transparent;
+                width: 100%;
+                padding: 12px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+
+            input[type=number] {
                 color: #FFF;
                 background: transparent;
                 width: 100%;
@@ -177,7 +193,7 @@ and open the template in the editor.
                 color: white;
                 cursor: pointer;
             }
-            
+
             .description-signup{
 
                 width: 100%;
@@ -209,22 +225,32 @@ and open the template in the editor.
                 <div class="title-observation">
                     <p>Preencha corretamente os dados!</p>
                 </div>
-                <form method="POST" action="authentication">
+                <form method="POST" action="signup">
                     <div class="set-input">
                         <label>Login: </label>
                         <input type="text" name="login"  placeholder="Digite aqui..."/>
                     </div>
                     <div class="set-input">
+                        <label>Email: </label>
+                        <input type="email" name="email"  placeholder="Digite aqui..."/>
+                    </div>
+                    <div class="set-input">
+                        <label>Nome: </label>
+                        <input type="text" name="name"  placeholder="Digite aqui..."/>
+                    </div>
+                    <div class="set-input">
                         <label>Senha: </label>
                         <input type="password" name="password"/>
                     </div>
+                    <div class="set-input">
+                        <label>Pontos: </label>
+                        <input type="number" name="points"/>
+                    </div>
                     <br>
-                    <input type="submit" value="Entrar"/>
+                    <input type="submit" value="Cadastre-se"/>
                 </form>
-                <div class="description-signup">
-                    <p>Faça parte do nosso time! <a href="/signup.jsp">Clique aqui</a></p>               
-                </div>
             </div>
         </div>
     </body>
 </html>
+
