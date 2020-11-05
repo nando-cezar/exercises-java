@@ -18,21 +18,21 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
             html, body{
-                width: 100%;
-                height:100%;
+                margin:0;
+                padding:0;
                 font-family: 'Segoe UI', Helvetica Neue, Helvetica, Lucida Grande, Arial;
             }
             body {
+                position: relative;
+                width: 100%;
+                height:100%;
                 background:url(https://i.pinimg.com/originals/3b/8a/d2/3b8ad2c7b1be2caf24321c852103598a.jpg);
                 background-size: cover;
                 background-repeat: no-repeat;
-                display: block;
-                margin:0;
-                padding:0
-
             }
             .app-window {
 
+                margin: 2%;
                 /* flexbox */
                 display: -webkit-flex;
                 display: flex;
@@ -46,7 +46,7 @@ and open the template in the editor.
                 justify-content:center;
             }
             .title-container{
-                
+
                 margin: 2%;
                 height: 20%;
                 width: 80%;
@@ -94,8 +94,9 @@ and open the template in the editor.
                 background-color: rgba(0,0,0,0.2);
                 border-radius: 10px;
                 height: 100%;
-                padding: 2% 20px;
                 width: 80%;
+                padding: 5%;
+
 
                 /* flexbox */
                 display: -webkit-flex;
@@ -152,7 +153,7 @@ and open the template in the editor.
             input[type=text] {
                 color: #FFF;
                 background: transparent;
-                width: 100%;
+                width: 90%;
                 padding: 12px;
                 border: 1px solid #ccc;
                 border-radius: 4px;
@@ -161,7 +162,7 @@ and open the template in the editor.
             input[type=password] {
                 color: #FFF;
                 background: transparent;
-                width: 100%;
+                width: 90%;
                 padding: 12px;
                 border: 1px solid #ccc;
                 border-radius: 4px;
@@ -169,7 +170,7 @@ and open the template in the editor.
             input[type=email] {
                 color: #FFF;
                 background: transparent;
-                width: 100%;
+                width: 90%;
                 padding: 12px;
                 border: 1px solid #ccc;
                 border-radius: 4px;
@@ -178,15 +179,17 @@ and open the template in the editor.
             input[type=number] {
                 color: #FFF;
                 background: transparent;
-                width: 100%;
+                width: 90%;
                 padding: 12px;
                 border: 1px solid #ccc;
                 border-radius: 4px;
             }
 
             input[type=submit] {
+                justify-content: center;
+                align-items: center;
                 background-color: rgba(10,23,55,0.5);
-                width: 100%;
+                width: 92.5%;
                 padding: 12px;
                 border: 1px solid #ccc;
                 border-radius: 4px;

@@ -128,11 +128,18 @@ and open the template in the editor.
                 -webkit-justify-content: center;
                 justify-content:center;
             }
+            
+            .format-form{
+                flex:1;
+                background-size: cover;
+            }
 
             p{
                 color: #FFF;
                 text-align: center;
+                overflow: auto;
                 font-size: 100%;
+                min-width: 100%;
             }
 
             form{
@@ -158,7 +165,7 @@ and open the template in the editor.
                 border: 1px solid #ccc;
                 border-radius: 4px;
             }
-            
+
             input[type=password] {
                 color: #FFF;
                 background: transparent;
@@ -177,24 +184,6 @@ and open the template in the editor.
                 color: white;
                 cursor: pointer;
             }
-            
-            .description-signup{
-
-                width: 100%;
-                margin: 10px;
-
-                /* flexbox */
-                display: -webkit-flex;
-                display: flex;
-
-                /* comportamento: em linha com wrap */
-                -webkit-flex-flow: row wrap;
-                flex-flow: row wrap;
-
-                /* conteúdo justificado no centro */
-                -webkit-justify-content: center;
-                justify-content:center;
-            }
 
         </style>
     </head>
@@ -209,20 +198,25 @@ and open the template in the editor.
                 <div class="title-observation">
                     <p>Preencha corretamente os dados!</p>
                 </div>
-                <form method="POST" action="authentication">
-                    <div class="set-input">
-                        <label>Login: </label>
-                        <input type="text" name="login"  placeholder="Digite aqui..."/>
-                    </div>
-                    <div class="set-input">
-                        <label>Senha: </label>
-                        <input type="password" name="password"/>
-                    </div>
+                <div class="format-form">
+                    <form method="POST" action="authentication">
+                        <div class="set-input">
+                            <label>Login: </label>
+                            <input type="text" name="login"  placeholder="Digite aqui..."/>
+                        </div>
+                        <div class="set-input">
+                            <label>Senha: </label>
+                            <input type="password" name="password"/>
+                        </div>
+                        <br>
+                        <input type="submit" value="Entrar"/>
+                    </form>
                     <br>
-                    <input type="submit" value="Entrar"/>
-                </form>
-                <div class="description-signup">
-                    <p>Faça parte do nosso time! <a href="/signup.jsp">Clique aqui</a></p>               
+                    <form style="margin-top: 1%; margin-bottom: 1%;" method="POST" action="signup">
+                        <div class="set-input">
+                            <p>Faça parte do nosso time! <input type="submit" value="Inscreva-se aqui!"/></p>               
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

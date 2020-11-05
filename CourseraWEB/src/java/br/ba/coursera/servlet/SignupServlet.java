@@ -25,6 +25,8 @@ public class SignupServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        request.getRequestDispatcher("signup.jsp").forward(request, response);
+            
         if (request.getParameter("login") != null
                 && request.getParameter("email") != null
                 && request.getParameter("name") != null
