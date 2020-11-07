@@ -18,20 +18,20 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Windows
  */
-@WebServlet(urlPatterns={"/signup"})
+@WebServlet(urlPatterns = {"/signup"})
 public class SignupServlet extends HttpServlet {
 
+    int cont = 0;
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        request.getRequestDispatcher("signup.jsp").forward(request, response);
-            
+   
         if (request.getParameter("login") != null
-                && request.getParameter("email") != null
-                && request.getParameter("name") != null
-                && request.getParameter("password") != null
-                && request.getParameter("points") != null) {
+                || request.getParameter("email") != null
+                || request.getParameter("name") != null
+                || request.getParameter("password") != null
+                || request.getParameter("points") != null) {
 
             User u = new User(
                     request.getParameter("login"),
@@ -42,8 +42,8 @@ public class SignupServlet extends HttpServlet {
             );
 
             new UserDAO().insert(u);
-
-            request.getRequestDispatcher("index.html");
+            
+            request.getRequestDispatcher("index.html").forward(request, response);
         } else {
             System.out.println("Usuário não cadastrado!!!");
         }
