@@ -141,7 +141,7 @@
                         <tr>
                             <td>${topic.id}</td>
                             <td>${topic.title}</td>
-                            <td>${topic.user}</td>
+                            <td>${topic.user.name}</td>
                             <td>${topic.description}</td>
                         </tr>
                     </c:forEach>
