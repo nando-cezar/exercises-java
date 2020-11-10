@@ -11,6 +11,7 @@ package br.ba.coursera.bean;
  */
 public class User {
     
+    private int id;
     private String login;
     private String email;
     private String name;
@@ -26,6 +27,14 @@ public class User {
     }
 
     public User() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getLogin() {

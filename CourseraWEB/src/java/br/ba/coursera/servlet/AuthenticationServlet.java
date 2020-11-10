@@ -5,9 +5,12 @@
  */
 package br.ba.coursera.servlet;
 
+import br.ba.coursera.bean.Topic;
 import br.ba.coursera.bean.User;
+import br.ba.coursera.dao.TopicDAO;
 import br.ba.coursera.dao.UserDAO;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Windows
  */
-@WebServlet(urlPatterns={"/authentication"})
+@WebServlet(urlPatterns = {"/authentication"})
 public class AuthenticationServlet extends HttpServlet {
 
     @Override
@@ -29,10 +32,13 @@ public class AuthenticationServlet extends HttpServlet {
         String password = request.getParameter("password");
 
         User user = new UserDAO().authentication(login, password);
-        
+
         if (user != null) {
+            List<Topic> listTopics = new TopicDAO().recovery();
+            request.setAttribute("Topics", listTopics);
             request.setAttribute("User", user);
             request.getRequestDispatcher("topics.jsp").forward(request, response);
+            
         } else {
             System.out.println("Usuário não encontrado!!!");
         }

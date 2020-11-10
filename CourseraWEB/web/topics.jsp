@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -109,6 +110,16 @@
                 -webkit-justify-content: center;
                 justify-content:center;
             }
+
+            input[type=submit] {
+                background-color: rgba(10,23,55,0.5);
+                width: 100%;
+                padding: 12px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                color: white;
+                cursor: pointer;
+            }
         </style>
     </head>
     <body>
@@ -119,8 +130,28 @@
                 <span class='line'></span>
             </div>
             <div class="sidebar">
-                OLAAA
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Titulo</th>
+                        <th>Usuário</th>
+                        <th>Descrição</th>
+                    </tr>
+                    <c:forEach items="${Topics}" var="topic">
+                        <tr>
+                            <td>${topic.id}</td>
+                            <td>${topic.title}</td>
+                            <td>${topic.user}</td>
+                            <td>${topic.description}</td>
+                        </tr>
+                    </c:forEach>
+                </table>
+                <br>
+                <input type="submit" value="Consulte ranking"/>
+                <br>
+                <input type="submit" value="Inserir tópicos"/>
             </div>
+
         </div>
     </body>
 </html>

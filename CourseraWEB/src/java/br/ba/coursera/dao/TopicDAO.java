@@ -6,6 +6,7 @@
 package br.ba.coursera.dao;
 
 import br.ba.coursera.bean.Topic;
+import br.ba.coursera.bean.Topic;
 import br.ba.coursera.bean.User;
 import br.ba.coursera.connection.ConnectionFactory;
 import java.sql.Connection;
@@ -28,7 +29,39 @@ public class TopicDAO implements InterfaceTopicDAO {
 
     @Override
     public List<Topic> recovery() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        Connection conn = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        List<Topic> topics = new ArrayList<>();
+
+        try {
+
+            stmt = conn.prepareStatement("SELECT * FROM topico");
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+
+                Topic t = new Topic();
+                t.setId(rs.getInt("id"));
+                t.setTitle(rs.getString("titulo"));
+//                User u = new User();
+//                u.setId(rs.getInt("usuario_id"));
+//                u.setName(rs.getString("nome"));
+                //t.setUser(u);
+                t.setDescription(rs.getString("descricao"));
+
+                topics.add(t);
+            }
+
+        } catch (SQLException ex) {
+            System.out.println("Erro: " + ex);
+        } finally {
+            ConnectionFactory.closeConnection(conn, stmt, rs);
+        }
+        
+        return topics;
     }
 
     @Override
