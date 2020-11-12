@@ -120,6 +120,33 @@
                 color: white;
                 cursor: pointer;
             }
+
+            th{
+                color: #FFF;
+            }
+
+            td{
+                color: #FFF;
+            }
+            
+            .rodape{
+                margin: 2%;
+                height: 20%;
+                width: 100%;
+                
+
+                /* flexbox */
+                display: -webkit-flex;
+                display: flex;
+
+                /* comportamento: em linha com wrap */
+                -webkit-flex-flow: row wrap;
+                flex-flow: row wrap;
+
+                /* conteúdo justificado no centro */
+                -webkit-justify-content: center;
+                justify-content:center;
+            }
         </style>
     </head>
     <body>
@@ -130,7 +157,7 @@
                 <span class='line'></span>
             </div>
             <div class="sidebar">
-                <table>
+                <table width="100%" border="1px">
                     <tr>
                         <th>ID</th>
                         <th>Titulo</th>
@@ -147,17 +174,19 @@
                     </c:forEach>
                 </table>
                 <br>
-                <form style="margin-top: 1%; margin-bottom: 1%;" action="">
-                    <div class="set-input">
-                        <input type="submit" value="Consulte ranking!"/></p>               
-                    </div>
-                </form>
-                <br>
-                <form style="margin-top: 1%; margin-bottom: 1%;" action="callInsertTopic">
-                    <div class="set-input">
-                        <input type="submit" value="Inserir tópico!"/></p>               
-                    </div>
-                </form>
+                <div class="rodape" >
+                    <form style=" float: right; margin: 1%; width: 48%;" action="">
+                        <div class="set-input">
+                            <input type="submit" value="Consulte ranking!"/></p>               
+                        </div>
+                    </form>
+                    <br>
+                    <form style=" float: left; margin: 1%; width: 48%;" action="callInsertTopic">
+                        <div class="set-input">
+                            <input type="submit" value="Inserir tópico!"/></p>               
+                        </div>
+                    </form>
+                </div>
             </div>
 
         </div>
