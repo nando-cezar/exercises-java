@@ -147,9 +147,17 @@
                     </c:forEach>
                 </table>
                 <br>
-                <input type="submit" value="Consulte ranking"/>
+                <form style="margin-top: 1%; margin-bottom: 1%;" action="">
+                    <div class="set-input">
+                        <input type="submit" value="Consulte ranking!"/></p>               
+                    </div>
+                </form>
                 <br>
-                <input type="submit" value="Inserir tópicos"/>
+                <form style="margin-top: 1%; margin-bottom: 1%;" action="callInsertTopic">
+                    <div class="set-input">
+                        <input type="submit" value="Inserir tópico!"/></p>               
+                    </div>
+                </form>
             </div>
 
         </div>

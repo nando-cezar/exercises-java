@@ -8,9 +8,7 @@ package br.ba.coursera.servlet;
 import br.ba.coursera.bean.Topic;
 import br.ba.coursera.bean.User;
 import br.ba.coursera.dao.TopicDAO;
-import br.ba.coursera.dao.UserDAO;
 import java.io.IOException;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,29 +20,32 @@ import javax.servlet.http.HttpSession;
  *
  * @author Windows
  */
-@WebServlet(urlPatterns = {"/authentication"})
-public class AuthenticationServlet extends HttpServlet {
+@WebServlet(urlPatterns = {"/registerTopic"})
+public class RegisterTopicServlet extends HttpServlet {
 
+    int cont = 0;
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        String login = request.getParameter("login");
-        String password = request.getParameter("password");
-
-        User user = new UserDAO().authentication(login, password);
-
-        if (user != null) {
-            List<Topic> listTopics = new TopicDAO().recovery();
-            request.setAttribute("Topics", listTopics);
+   
+        HttpSession session = request.getSession();
+        System.out.println(session.getAttribute("User"));
             
-            HttpSession session = request.getSession();
-            session.setAttribute("User", user);
+        if (request.getParameter("title") != null
+                || request.getParameter("description") != null) {
+
+            Topic t = new Topic(
+                    request.getParameter("title"),
+                    (User) session.getAttribute("User"),
+                    request.getParameter("description")
+            );
+
+            new TopicDAO().insert(t);
             
             request.getRequestDispatcher("topics.jsp").forward(request, response);
-            
         } else {
-            System.out.println("Usuário não encontrado!!!");
+            System.out.println("Tópico não cadastrado!!!");
         }
 
     }

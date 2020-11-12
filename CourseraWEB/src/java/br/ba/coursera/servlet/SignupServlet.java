@@ -20,8 +20,6 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(urlPatterns = {"/signup"})
 public class SignupServlet extends HttpServlet {
-
-    int cont = 0;
     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
