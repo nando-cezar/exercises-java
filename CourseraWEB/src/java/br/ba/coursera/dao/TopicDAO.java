@@ -28,7 +28,7 @@ public class TopicDAO implements InterfaceTopicDAO {
         PreparedStatement stmt = null;
 
         try {
-            String sql = "INSERT INTO usuario (titulo, usuario_id, descricao) values (?, ?, ?)";
+            String sql = "INSERT INTO topico (titulo, usuario_id, descricao) values (?, ?, ?)";
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, t.getTitle());
             stmt.setInt(2, t.getUser().getId());

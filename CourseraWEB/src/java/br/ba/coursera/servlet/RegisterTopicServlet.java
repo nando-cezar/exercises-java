@@ -9,6 +9,7 @@ import br.ba.coursera.bean.Topic;
 import br.ba.coursera.bean.User;
 import br.ba.coursera.dao.TopicDAO;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,26 +23,26 @@ import javax.servlet.http.HttpSession;
  */
 @WebServlet(urlPatterns = {"/registerTopic"})
 public class RegisterTopicServlet extends HttpServlet {
-
-    int cont = 0;
     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
    
-        HttpSession session = request.getSession();
-        System.out.println(session.getAttribute("User"));
-            
+        HttpSession session = request.getSession();  
+        
         if (request.getParameter("title") != null
                 || request.getParameter("description") != null) {
 
             Topic t = new Topic(
-                    request.getParameter("title"),
+                    request.getParameter("title"), 
                     (User) session.getAttribute("User"),
                     request.getParameter("description")
             );
 
             new TopicDAO().insert(t);
+            
+            List<Topic> listTopics = new TopicDAO().recovery();
+            request.setAttribute("Topics", listTopics);
             
             request.getRequestDispatcher("topics.jsp").forward(request, response);
         } else {

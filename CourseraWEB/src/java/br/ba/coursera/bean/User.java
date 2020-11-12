@@ -18,6 +18,15 @@ public class User {
     private String password;
     private int points;
 
+    public User(int id, String login, String email, String name, String password, int points) {
+        this.id = id;
+        this.login = login;
+        this.email = email;
+        this.name = name;
+        this.password = password;
+        this.points = points;
+    }
+    
     public User(String login, String email, String name, String password, int points) {
         this.login = login;
         this.email = email;

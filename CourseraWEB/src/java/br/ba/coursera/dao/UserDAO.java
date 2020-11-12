@@ -36,6 +36,7 @@ public class UserDAO implements InterfaceUserDAO {
 
             if (rs.next()) {
                 u = new User(); 
+                u.setId(rs.getInt("id"));
                 u.setLogin(rs.getString("login"));
                 u.setEmail(rs.getString("email"));
                 u.setName(rs.getString("nome"));
