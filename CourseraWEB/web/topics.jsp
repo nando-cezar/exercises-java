@@ -121,19 +121,63 @@
                 cursor: pointer;
             }
 
-            th{
-                color: #FFF;
+            #minhaTabela{
+                width:100%;
+                margin:1% auto;
+                border:0;
+                box-shadow: 0 5px 30px darkgrey;
+                border-spacing: 0;
             }
 
-            td{
-                color: #FFF;
+            #minhaTabela thead th{
+                font-weight: bold;
+                background-color: black;
+                color: white;
+
+                padding:5px 10px;
             }
-            
+
+            #minhaTabela tr td{
+                padding:5px 10px;
+                text-align: center;
+
+                cursor: pointer; /**importante para não mostrar cursor de texto**/
+            }
+
+            #minhaTabela tr td:last-child{
+                text-align: center;
+            }
+
+            /**Cores**/
+            #minhaTabela tr:nth-child(odd){
+                background-color: #eee;
+            }
+
+            /**Cor quando passar por cima**/
+            #minhaTabela tr:hover td{
+                background-color: #feffb7;
+            }
+
+            /**Cor quando selecionado**/
+            #minhaTabela tr.selecionado td{
+                background-color: #aff7ff;
+            }
+
+            button#visualizarDados{
+                background-color: white;
+                border: 1px solid black;
+                width:50%;
+                margin: 10px auto;
+                padding:10px 0;
+                display: block;
+                color: black;
+            }
+
             .rodape{
                 margin: 2%;
                 height: 20%;
                 width: 100%;
-                
+
 
                 /* flexbox */
                 display: -webkit-flex;
@@ -157,19 +201,17 @@
                 <span class='line'></span>
             </div>
             <div class="sidebar">
-                <table width="100%" border="1px">
+                <table id='minhaTabela'>
                     <tr>
                         <th>ID</th>
                         <th>Titulo</th>
                         <th>Usuário</th>
-                        <th>Descrição</th>
                     </tr>
                     <c:forEach items="${Topics}" var="topic">
                         <tr>
                             <td>${topic.id}</td>
                             <td>${topic.title}</td>
                             <td>${topic.user.name}</td>
-                            <td>${topic.description}</td>
                         </tr>
                     </c:forEach>
                 </table>
@@ -186,9 +228,63 @@
                             <input type="submit" value="Inserir tópico!"/></p>               
                         </div>
                     </form>
+                    <button id="visualizarDados">Visualizar Dados</button>
                 </div>
             </div>
 
         </div>
     </body>
+    <script>
+        var tabela = document.getElementById("minhaTabela");
+        var linhas = tabela.getElementsByTagName("tr");
+
+        for (var i = 0; i < linhas.length; i++) {
+            var linha = linhas[i];
+            linha.addEventListener("click", function () {
+                //Adicionar ao atual
+                selLinha(this, false); //Selecione apenas um
+                //selLinha(this, true); //Selecione quantos quiser
+            });
+        }
+
+        /**
+         Caso passe true, você pode selecionar multiplas linhas.
+         Caso passe false, você só pode selecionar uma linha por vez.
+         **/
+        function selLinha(linha, multiplos) {
+            if (!multiplos) {
+                var linhas = linha.parentElement.getElementsByTagName("tr");
+                for (var i = 0; i < linhas.length; i++) {
+                    var linha_ = linhas[i];
+                    linha_.classList.remove("selecionado");
+                }
+            }
+            linha.classList.toggle("selecionado");
+        }
+
+        /**
+         Exemplo de como capturar os dados
+         **/
+        var btnVisualizar = document.getElementById("visualizarDados");
+
+        btnVisualizar.addEventListener("click", function () {
+            var selecionados = tabela.getElementsByClassName("selecionado");
+            //Verificar se eestá selecionado
+            if (selecionados.length < 1) {
+                alert("Selecione pelo menos uma linha");
+                return false;
+            }
+
+            var dados = "";
+
+            for (var i = 0; i < selecionados.length; i++) {
+                var selecionado = selecionados[i];
+                selecionado = selecionado.getElementsByTagName("td");
+                dados += "ID: " + selecionado[0].innerHTML + " - Titulo: " + selecionado[1].innerHTML + " - Usuario: " + selecionado[2].innerHTML + "\n";
+            }
+
+            alert(dados);
+        });
+    </script>
 </html>
+
