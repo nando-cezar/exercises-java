@@ -5,7 +5,7 @@
  */
 package br.ba.coursera.dao;
 
-import br.ba.coursera.bean.Topic;
+import br.ba.coursera.bean.Comment;
 import br.ba.coursera.bean.User;
 import br.ba.coursera.connection.ConnectionFactory;
 import java.sql.Connection;
@@ -19,10 +19,10 @@ import java.util.List;
  *
  * @author Windows
  */
-public class CommentDAO implements InterfaceTopicDAO {
+public class CommentDAO implements InterfaceCommentDAO {
 
     @Override
-    public void insert(Topic t) {
+    public void insert(Comment c) {
         
         Connection conn = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
@@ -30,8 +30,8 @@ public class CommentDAO implements InterfaceTopicDAO {
         try {
             String sql = "INSERT INTO comentario (usuario_id, descricao) values (?, ?)";
             stmt = conn.prepareStatement(sql);
-            stmt.setInt(2, t.getUser().getId());
-            stmt.setString(3, t.getDescription());
+            stmt.setInt(2, c.getUser().getId());
+            stmt.setString(3, c.getDescription());
 
             stmt.executeUpdate();
 
@@ -45,13 +45,13 @@ public class CommentDAO implements InterfaceTopicDAO {
     }
 
     @Override
-    public List<Topic> recovery() {
+    public List<Comment> recovery() {
         
         Connection conn = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
-        List<Topic> comments = new ArrayList<>();
+        List<Comment> comments = new ArrayList<>();
 
         try {
 
@@ -60,7 +60,7 @@ public class CommentDAO implements InterfaceTopicDAO {
 
             while (rs.next()) {
 
-                Topic t = new Topic();
+                Comment t = new Comment();
                 t.setId(rs.getInt("id"));
                 User u = new User();
                 u.setId(rs.getInt("usuario_id"));
@@ -81,18 +81,18 @@ public class CommentDAO implements InterfaceTopicDAO {
     }
 
     @Override
-    public Topic recoveryTopic(Topic t) {
+    public Comment recoveryComment(Comment c) {
         
         Connection conn = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
-        Topic comment = new Topic();
+        Comment comment = new Comment();
 
         try {
 
             stmt = conn.prepareStatement("SELECT * FROM usuario WHERE id = ?");
-            stmt.setInt(1, t.getId());
+            stmt.setInt(1, c.getId());
             rs = stmt.executeQuery();
 
             if (rs.next()) {

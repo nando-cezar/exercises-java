@@ -23,6 +23,12 @@ public class Comment {
         this.user = user;
         this.description = description;
     }
+    
+    public Comment(User user, String description) {
+        this.user = user;
+        this.description = description;
+    }
+    
 
     public int getId() {
         return id;

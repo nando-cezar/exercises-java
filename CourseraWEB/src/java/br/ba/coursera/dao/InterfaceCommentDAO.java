@@ -5,7 +5,7 @@
  */
 package br.ba.coursera.dao;
 
-import br.ba.coursera.bean.Topic;
+import br.ba.coursera.bean.Comment;
 import java.util.List;
 
 /**
@@ -14,9 +14,9 @@ import java.util.List;
  */
 public interface InterfaceCommentDAO {
    
-   public void insert(Topic t);
+   public void insert(Comment c);
    
-   public List<Topic> recovery();
+   public List<Comment> recovery();
    
-   public Topic recoveryTopic(Topic t);
+   public Comment recoveryComment(Comment c);
 }

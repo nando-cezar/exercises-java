@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -219,7 +220,7 @@ and open the template in the editor.
                     </div>
                     <div class="set-input">
                         <h2>Usuario: </h2>
-                        <h4> blablablabla </h4>++
+                        <h4> blablablabla </h4>
                     </div>
                     <div class="set-input">
                         <h2>Descrção: </h2>
