@@ -1,285 +1,93 @@
-<%-- 
-    Document   : topics
-    Created on : 02/11/2020, 16:42:12
-    Author     : Windows
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>CourseraWEB | Ranking</title>
-        <style>
-            *{
-                box-sizing:border-box;
-                margin:0;
-                padding:0
-            }
 
-            html, body{
-                width: 100%;
-                height:100%;
-                font-family: 'Segoe UI', Helvetica Neue, Helvetica, Lucida Grande, Arial;
-            }
-            body {
-                background:url(https://s2.best-wallpaper.net/wallpaper/3840x2160/1801/England-Wales-waterfall-river-trees_3840x2160.jpg);
-                background-size: auto;
-                background-repeat: no-repeat;
-                background-position: center;
-            }
-            .app-window {
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+	<title>Ranking</title>
 
-                margin: 20px;
-                /* flexbox */
-                display: -webkit-flex;
-                display: flex;
+	<!-- Bootstrap CSS -->
+	<c:url value="/resources" var="resourcesPath" />
+	<link href="${resourcesPath}/css/bootstrap.min.css" rel="stylesheet">
 
-                /* comportamento: em linha com wrap */
-                -webkit-flex-flow: row wrap;
-                flex-flow: row wrap;
+	<!-- Biblioteca de Icones Font Awesome -->
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+</head>
 
-                /* conteúdo justificado no centro */
-                -webkit-justify-content: center;
-                justify-content:center;
-            }
-            .title-container{
+<body>
+	
+	<div class="container">
+		
+		<nav class="navbar navbar-default">
+		  <div class="container-fluid">
+		  
+		    <div class="navbar-header">
+		      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#links" aria-expanded="false">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+		      <a class="navbar-brand">Forum Gamification</a>
+		    </div>
+		
+		    <div class="collapse navbar-collapse" id="links">
+		      <ul class="nav navbar-nav navbar-right">
+		        <li>
+		        	<c:url value='/TopicosController' var="linkTopicos" />
+		        	<a href="${linkTopicos }">Tópicos</a>
+		        </li>
+		        <li class="active">
+		        	<c:url value='/RankingController' var="linkRanking" />
+		        	<a href="${linkRanking }">Ranking</a>
+		        </li>
+		        <li>
+		        	<a>Olá, ${usuario.nome }</a>
+		        </li>
+		      </ul>
+		    </div>
+		    
+		  </div>
+		</nav>
+		
+		<div class="row">
+			<div class="col-md-12">
+				<div class="page-header">
+					<h1>Ranking</h1>
+				</div>
+				
+				<table class="table table-bordered table-striped table-hover">
+					<thead>
+						<tr>
+							<th class="active">Colocação</th>
+							<th class="active">Nome</th>
+							<th class="active">Login</th>
+							<th class="active">Pontos</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach items="${ranking }" var="usuario" varStatus="i">
+							<tr>
+								<td class="col-xs-1">${i.index + 1 }</td>
+								<td>${usuario.nome }</td>
+								<td>${usuario.login }</td>
+								<td>${usuario.pontos }</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+				
+			</div>
+		</div>
+	</div>
 
-                margin: 2%;
-                height: 20%;
-                width: 100%;
-
-                /* flexbox */
-                display: -webkit-flex;
-                display: flex;
-
-                /* comportamento: em linha com wrap */
-                -webkit-flex-flow: row wrap;
-                flex-flow: row wrap;
-
-                /* conteúdo justificado no centro */
-                -webkit-justify-content: center;
-                justify-content:center;
-            }
-
-            .line {
-                background: #fff;
-                height: 2px;
-                width: 60px;
-                margin-top: 2%; 
-                margin-bottom: 2%;
-            }
-
-            span, h2 {
-                -webkit-flex: 1 0 auto;
-                flex: 1 0 auto;
-            }
-
-            h2 {
-                color: #fff;
-                text-align: center;
-                overflow: auto;
-                font-size: 100%;
-                min-width: 100%;
-            }    
-            @media(min-width: 450px) {
-                h2 {
-                    font-size: 130%;
-                }
-            }
-
-            .sidebar {
-
-                background-color: rgba(0,0,0,0.2);
-                border-radius: 10px;
-                height: 100%;
-                width: 100%;
-                padding: 20px;
-
-
-                /* flexbox */
-                display: -webkit-flex;
-                display: flex;
-
-                /* comportamento: em linha com wrap */
-                -webkit-flex-flow: row wrap;
-                flex-flow: row wrap;
-
-                /* conteúdo justificado no centro */
-                -webkit-justify-content: center;
-                justify-content:center;
-            }
-
-            input[type=submit] {
-                background-color: rgba(10,23,55,0.5);
-                width: 100%;
-                padding: 12px;
-                border: 1px solid #ccc;
-                border-radius: 4px;
-                color: white;
-                cursor: pointer;
-            }
-
-            #minhaTabela{
-                width:100%;
-                margin:1% auto;
-                border:0;
-                box-shadow: 0 5px 30px darkgrey;
-                border-spacing: 0;
-            }
-
-            #minhaTabela thead th{
-                font-weight: bold;
-                background-color: black;
-                color: white;
-
-                padding:5px 10px;
-            }
-
-            #minhaTabela tr td{
-                padding:5px 10px;
-                text-align: center;
-
-                cursor: pointer; /**importante para não mostrar cursor de texto**/
-            }
-
-            #minhaTabela tr td:last-child{
-                text-align: center;
-            }
-
-            /**Cores**/
-            #minhaTabela tr:nth-child(odd){
-                background-color: #eee;
-            }
-
-            /**Cor quando passar por cima**/
-            #minhaTabela tr:hover td{
-                background-color: #feffb7;
-            }
-
-            /**Cor quando selecionado**/
-            #minhaTabela tr.selecionado td{
-                background-color: #aff7ff;
-            }
-
-            button#visualizarDados{
-                background-color: white;
-                border: 1px solid black;
-                width:50%;
-                margin: 10px auto;
-                padding:10px 0;
-                display: block;
-                color: black;
-            }
-
-            .rodape{
-                margin: 2%;
-                height: 20%;
-                width: 100%;
-
-
-                /* flexbox */
-                display: -webkit-flex;
-                display: flex;
-
-                /* comportamento: em linha com wrap */
-                -webkit-flex-flow: row wrap;
-                flex-flow: row wrap;
-
-                /* conteúdo justificado no centro */
-                -webkit-justify-content: center;
-                justify-content:center;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="app-window">
-            <div class="title-container">
-                <span class='line'></span>
-                <h2>Coursera WEB</h2>
-                <span class='line'></span>
-            </div>
-            <div class="sidebar">
-                <table id='minhaTabela'>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nome do usuário</th>
-                        <th>Login</th>
-                        <th>Pontuação</th>
-                    </tr>
-                    <c:forEach items="${Users}" var="user">
-                        <tr>
-                            <td>${user.id}</td>
-                            <td>${user.name}</td>
-                            <td>${user.login}</td>
-                            <td>${user.points}</td>
-                        </tr>
-                    </c:forEach>
-                </table>
-                <br>
-                <div class="rodape" >
-                    <form style=" float: left; margin: 1%; width: 48%;" action="callTopic">
-                        <div class="set-input">
-                            <input type="submit" value="Exibir tópicos!"/></p>               
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-        </div>
-    </body>
-    <script>
-        var tabela = document.getElementById("minhaTabela");
-        var linhas = tabela.getElementsByTagName("tr");
-
-        for (var i = 0; i < linhas.length; i++) {
-            var linha = linhas[i];
-            linha.addEventListener("click", function () {
-                //Adicionar ao atual
-                selLinha(this, false); //Selecione apenas um
-                //selLinha(this, true); //Selecione quantos quiser
-            });
-        }
-
-        /**
-         Caso passe true, você pode selecionar multiplas linhas.
-         Caso passe false, você só pode selecionar uma linha por vez.
-         **/
-        function selLinha(linha, multiplos) {
-            if (!multiplos) {
-                var linhas = linha.parentElement.getElementsByTagName("tr");
-                for (var i = 0; i < linhas.length; i++) {
-                    var linha_ = linhas[i];
-                    linha_.classList.remove("selecionado");
-                }
-            }
-            linha.classList.toggle("selecionado");
-        }
-
-        /**
-         Exemplo de como capturar os dados
-         **/
-        var btnVisualizar = document.getElementById("visualizarDados");
-
-        btnVisualizar.addEventListener("click", function () {
-            var selecionados = tabela.getElementsByClassName("selecionado");
-            //Verificar se eestá selecionado
-            if (selecionados.length < 1) {
-                alert("Selecione pelo menos uma linha");
-                return false;
-            }
-
-            var dados = "";
-
-            for (var i = 0; i < selecionados.length; i++) {
-                var selecionado = selecionados[i];
-                selecionado = selecionado.getElementsByTagName("td");
-                dados += "ID: " + selecionado[0].innerHTML + " - Titulo: " + selecionado[1].innerHTML + " - Usuario: " + selecionado[2].innerHTML + "\n";
-            }
-
-            alert(dados);
-        });
-    </script>
+	<!-- JQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!-- Bootstrap Javascript -->
+    <script src="${resourcesPath }/js/bootstrap.min.js"></script>
+</body>
 </html>
-
